@@ -50,39 +50,38 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   <h3 class="margin">Transfers</h3>
   <p>Marriott Santa Cruz de la Sierra</p> 
   
-  <form name="form1" method="post" action="edit.php">
+  <form name="form1" method="post">
         <table border="0">
             <tr> 
                 <td>Nombre</td>
-                <td><input type="text" name="nombre" value="<?php echo $nombre;?>"></td>
+                <td><input type="text" name="nombre" value=""></td>
             </tr>
             <tr> 
                 <td>Apellido</td>
-                <td><input type="text" name="apellido" value="<?php echo $apellido;?>"></td>
+                <td><input type="text" name="apellido" value=""></td>
             </tr>
             <tr> 
                 <td>Confirmacion</td>
-                <td><input type="text" name="confirmacion" value="<?php echo $confirmacion;?>"></td>
+                <td><input type="text" name="confirmacion" value=""></td>
             </tr>
             <tr> 
                 <td>Dia</td>
-                <td><input type="text" name="dia" value="<?php echo $dia;?>"></td>
+                <td><input type="text" name="dia" value=""></td>
             </tr>
             <tr> 
                 <td>Mes</td>
-                <td><input type="text" name="mes" value="<?php echo $mes;?>"></td>
+                <td><input type="text" name="mes" value=""></td>
             </tr>
 			<tr> 
                 <td>Año</td>
-                <td><input type="text" name="ano" value="<?php echo $ano;?>"></td>
+                <td><input type="text" name="ano" value=""></td>
             </tr>  
             <tr>
                 <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
-                <td><input type="submit" name="update" value="Update"></td>
+                <td><input type="submit" name="submit" value="Buscar"></td>
             </tr>
         </table>
     </form>
-  
   
   <table class="table table-striped">
 
@@ -101,7 +100,49 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 		<td></td>
 	</tr>
     
-    <?php 
+    <?php
+    include_once("config.php");
+
+    if(isset($_POST['submit'])) {	
+        $nombre = mysqli_real_escape_string($mysqli, $_POST['nombre']);
+        $apellido = mysqli_real_escape_string($mysqli, $_POST['apellido']);
+        $confirmacion = mysqli_real_escape_string($mysqli, $_POST['confirmacion']);
+        $dia = mysqli_real_escape_string($mysqli, $_POST['dia']);
+        $mes = mysqli_real_escape_string($mysqli, $_POST['mes']);
+        $ano = mysqli_real_escape_string($mysqli, $_POST['ano']);
+        
+        // checking empty fields
+        if(empty($nombre) ||empty($apellido) ||  empty($confirmacion) || empty($dia) || empty($mes) || empty($ano)) {
+            
+            if(empty($nombre)) {
+                echo "<font color='red'>Ingresar nombre de huesped. Please add name</font><br/>";
+            }
+            if(empty($apellido)) {
+                echo "<font color='red'>Ingresar apellido. Please add last name</font><br/>";
+            }
+            
+            if(empty($confirmacion)) {
+                echo "<font color='red'>Ingresar numero de confirmacion de reserva. Please add a reservation confirmation number</font><br/>";
+            }
+            
+            if(empty($vuelo)) {
+                echo "<font color='red'>Ingresar informacion de vuelo. Please add flight number</font><br/>";
+            }
+            
+            if(empty($dia)) {
+                echo "<font color='red'>Ingresar dia de llegada de vuelo. Please add arrival day of flight</font><br/>";
+            }
+            
+            if(empty($mes)) {
+                echo "<font color='red'>Ingresar mes de llegada de vuelo. Please add month</font><br/>";
+            }
+            
+            if(empty($ano)) {
+                echo "<font color='red'>Ingresar año de llegada de vuelo. Please add year</font><br/>";
+            }
+            
+            //link to the previous page
+            echo "<br/><font color='white'><a href='javascript:self.history.back();'>Recargar datos incorrectos- Reload submitted information</a></font>"; 
     //fetch data in descending order
     $result = mysqli_query($mysqli, "SELECT * FROM transfer ORDER BY id DESC LIMIT 18"); // using mysqli_query instead
     
