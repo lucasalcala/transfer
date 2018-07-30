@@ -110,41 +110,9 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
         $dia = mysqli_real_escape_string($mysqli, $_POST['dia']);
         $mes = mysqli_real_escape_string($mysqli, $_POST['mes']);
         $ano = mysqli_real_escape_string($mysqli, $_POST['ano']);
-        
-        // checking empty fields
-        if(empty($nombre) ||empty($apellido) ||  empty($confirmacion) || empty($dia) || empty($mes) || empty($ano)) {
-            
-            if(empty($nombre)) {
-                echo "<font color='red'>Ingresar nombre de huesped. Please add name</font><br/>";
-            }
-            if(empty($apellido)) {
-                echo "<font color='red'>Ingresar apellido. Please add last name</font><br/>";
-            }
-            
-            if(empty($confirmacion)) {
-                echo "<font color='red'>Ingresar numero de confirmacion de reserva. Please add a reservation confirmation number</font><br/>";
-            }
-            
-            if(empty($vuelo)) {
-                echo "<font color='red'>Ingresar informacion de vuelo. Please add flight number</font><br/>";
-            }
-            
-            if(empty($dia)) {
-                echo "<font color='red'>Ingresar dia de llegada de vuelo. Please add arrival day of flight</font><br/>";
-            }
-            
-            if(empty($mes)) {
-                echo "<font color='red'>Ingresar mes de llegada de vuelo. Please add month</font><br/>";
-            }
-            
-            if(empty($ano)) {
-                echo "<font color='red'>Ingresar año de llegada de vuelo. Please add year</font><br/>";
-            }
-            
-            //link to the previous page
-            echo "<br/><font color='white'><a href='javascript:self.history.back();'>Recargar datos incorrectos- Reload submitted information</a></font>"; 
+    }
     //fetch data in descending order
-    $result = mysqli_query($mysqli, "SELECT * FROM transfer ORDER BY id DESC LIMIT 18"); // using mysqli_query instead
+    $result = mysqli_query($mysqli, "SELECT * FROM transfer WHERE dia = $dia AND mes = $mes AND OR ano =$ano"); // using mysqli_query instead
     
     //while loop used to retrieve data from the SQL database
 	while($res = mysqli_fetch_array($result)) { 		
