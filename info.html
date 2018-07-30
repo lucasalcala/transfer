@@ -1,0 +1,167 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marriott Santa Cruz Transfers</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+</head>
+
+<body>
+<!-- header section -->
+<section class="innerbannermaininfo" role="banner">
+  <header id="header"> 
+    <!-- navigation section  -->
+    <div class="header-content clearfix">
+      <nav class="navigation" role="navigation">
+        <ul class="primary-nav">
+          <li><a href="index.php"><b><u>Transfer</u></b></a></li>
+        </ul>
+      </nav>
+      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+    <!-- navigation section  --> 
+  </header>
+  
+  <!-- banner text -->
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="innerbanner-text text-center">
+        <p>Information</p>
+		
+        <!-- banner text --> 
+      </div>
+    </div>
+  </div>
+</section>
+<!-- header section --> 
+
+<!-- description text section -->
+<section id="inner-description" class="section inner-description">
+
+	<div class="col-md-8 col-md-offset-2 text-center">
+      <p></p>
+  	</div>
+	
+	<div class="container">
+    	<div class="col-md-10 col-md-offset-1 space">
+      	
+		<p>INFORMACIÓN</p>
+		<ul>
+			<li>Este servicio es solamente para reserva de traslado aeropuerto Viru Viru – Hotel Marriott Santa Cruz.</li>
+			<li>Traslados desde el hotel al aeropuerto se debe gestionar directamente en recepción o con los agentes de at your service.</li>
+			<li>Costo:<b> 90 Bs ($13 USD)</b> pago en efectivo.<b> 105 Bs ($15 USD)</b> con cargo a habitación </li>
+			<li>Máximo tres (3) personas por taxi con una (1) pieza de equipaje por persona. </li>
+			<li>Cancelación o modificaciones: hasta 2 horas previas al horario de llegada por teléfono o por email. </li>
+			<li><b>Teléfono: (591) 3342-4848</b></li>
+			<li><b>Email: rooms.santacruz@marriotthotels.com</b></li>
+		</ul>
+		<br>	
+		
+		<p>INFORMATION</p>
+		<ul>
+			<li>This service is only for transportation from the airport Viru Viru to the Marriott Santa Cruz hotel.</li>
+			<li>Transfer out (hotel to airport transportation) must be requested at the hotel with any front desk or at your service agents.</li>
+			<li>Price: <b>Bs 90 ($13 USD)</b> if paid directly with the driver. <b>Bs 105 ($15 USD)</b> if added to the room billing.</li>
+			<li>This service is only available for a maximum of three (3) passengers per taxi each with one (1) piece of luggage. </li>
+			<li>Cancelation or modifications: Up to 2 hours prior to the arrival time by phone or mail </li>
+			<li><b>Telephone: (591) 3342-4848</b></li>
+			<li><b>Email: rooms.santacruz@marriotthotels.com</b></li>
+		</ul>
+		<br>
+ 		 
+
+  </div>
+  
+</section>
+
+<!-- Verify input section -->
+<section id="infomap" class="section info">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2 text-center">
+      <!-- description text section --> 
+	  <h3>Dirección - Location</h3>
+	  <p><b>4to anillo c/Las Ramblas Zona Equipetrol Norte, Santa Cruz de la Sierra - Bolivia</b></p>
+	  <!-- map -->
+	  <div style="width: 100%"><iframe width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;coord=-17.761021751658546, -63.20226699200134&amp;q=4to%20anillo%20av.%20las%20ramblas+(Hotel%20Marriott%20Santa%20Cruz)&amp;ie=UTF8&amp;t=h&amp;z=17&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/create-google-map/">Embed Google Map</a></iframe></div><br />
+  	  </div>
+	  
+	  <div class="col-md-8 col-md-offset-2 text-center">
+  	  <h3>Viru Viru International - Marriott Santa Cruz</h3>
+	  
+	  <div style="width: 100%;">
+         <div id="map" style="width: 280px; height: 400px; float: left;"></div> 
+         <div id="panel" style="width: 300px; float: right;"></div> 
+       </div>
+       
+       <script type="text/javascript"> 
+    
+         var directionsService = new google.maps.DirectionsService();
+         var directionsDisplay = new google.maps.DirectionsRenderer();
+    
+         var map = new google.maps.Map(document.getElementById('map'), {
+           zoom:7,
+           mapTypeId: google.maps.MapTypeId.ROADMAP
+         });
+        
+         directionsDisplay.setMap(map);
+         directionsDisplay.setPanel(document.getElementById('panel'));
+    
+         var request = {
+           origin: 'Aeropuerto Internacional Viru Viru', 
+           destination: 'Marriott Santa Cruz de la Sierra Hotel',
+           travelMode: google.maps.DirectionsTravelMode.DRIVING
+         };
+    
+         directionsService.route(request, function(response, status) {
+           if (status == google.maps.DirectionsStatus.OK) {
+             directionsDisplay.setDirections(response);
+           }
+         });
+       </script> 
+		<br>
+	  </div>
+	  
+	  
+	  
+	  
+</section>
+<!-- hire me section --> 
+<!-- footer -->
+
+<footer class="section footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="col-md-12">
+       
+     <!--  <p>© 2018 All rights reserved. All Rights Reserved<br>
+          Made by <a href="http://.com/">Lucas Alcala</a></p> -->  
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer --> 
+
+<!-- JS FILES --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.fancybox.pack.js"></script> 
+<script src="js/jquery.waypoints.min.js"></script> 
+<script src="js/retina.min.js"></script> 
+<script src="js/modernizr.js"></script> 
+<script src="js/main.js"></script>
+
+</body>
+</html>
