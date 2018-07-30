@@ -10,10 +10,6 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: login.php");
   exit;
 }
-
-//fetch data in descending order
-
-$result = mysqli_query($mysqli, "SELECT * FROM transfer ORDER BY id DESC LIMIT 18"); // using mysqli_query instead
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +49,41 @@ $result = mysqli_query($mysqli, "SELECT * FROM transfer ORDER BY id DESC LIMIT 1
 <div class="container-fluid bg-1 text-center">
   <h3 class="margin">Transfers</h3>
   <p>Marriott Santa Cruz de la Sierra</p> 
+  
+  <form name="form1" method="post" action="edit.php">
+        <table border="0">
+            <tr> 
+                <td>Nombre</td>
+                <td><input type="text" name="nombre" value="<?php echo $nombre;?>"></td>
+            </tr>
+            <tr> 
+                <td>Apellido</td>
+                <td><input type="text" name="apellido" value="<?php echo $apellido;?>"></td>
+            </tr>
+            <tr> 
+                <td>Confirmacion</td>
+                <td><input type="text" name="confirmacion" value="<?php echo $confirmacion;?>"></td>
+            </tr>
+            <tr> 
+                <td>Dia</td>
+                <td><input type="text" name="dia" value="<?php echo $dia;?>"></td>
+            </tr>
+            <tr> 
+                <td>Mes</td>
+                <td><input type="text" name="mes" value="<?php echo $mes;?>"></td>
+            </tr>
+			<tr> 
+                <td>Año</td>
+                <td><input type="text" name="ano" value="<?php echo $ano;?>"></td>
+            </tr>  
+            <tr>
+                <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
+                <td><input type="submit" name="update" value="Update"></td>
+            </tr>
+        </table>
+    </form>
+  
+  
   <table class="table table-striped">
 
 	<tr>
@@ -69,9 +100,12 @@ $result = mysqli_query($mysqli, "SELECT * FROM transfer ORDER BY id DESC LIMIT 1
 		<td>Asociado</td>
 		<td></td>
 	</tr>
-  <?php 
- 
-	//while loop used to retrieve data from the SQL database
+    
+    <?php 
+    //fetch data in descending order
+    $result = mysqli_query($mysqli, "SELECT * FROM transfer ORDER BY id DESC LIMIT 18"); // using mysqli_query instead
+    
+    //while loop used to retrieve data from the SQL database
 	while($res = mysqli_fetch_array($result)) { 		
 		echo "<tr>";
 		echo "<td>".$res['nombre']." ".$res['apellido']."</td>";
